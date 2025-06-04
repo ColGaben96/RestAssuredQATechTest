@@ -7,6 +7,7 @@ import com.visa.qa.restassuredswaggersb.common.utils.EndpointConstants;
 import com.visa.qa.restassuredswaggersb.pet.model.Pet;
 import io.restassured.response.Response;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,13 +20,8 @@ public class PetTestClient {
     public Response getPetById(Long petId) {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
-                EndpointConstants.PUT_PET_ENDPOINT+"/"+petId,
-                new java.util.ArrayList<String>() {{
-                    add("petId");
-                }},
-                new java.util.ArrayList<String>() {{
-                    add("petId");
-                }}
+                EndpointConstants.PUT_PET_ENDPOINT + "/" + petId,
+                new HashMap<>(){{}}
         );
     }
 
@@ -33,11 +29,10 @@ public class PetTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.GET_PET_BY_TAGS_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("tags");
-                }},
-                new java.util.ArrayList<String>() {{
-                    addAll(tags);
+                new HashMap<String, Object>() {{
+                    for (String tag : tags) {
+                        put("tags", tag);
+                    }
                 }}
         );
     }
@@ -46,11 +41,8 @@ public class PetTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.GET_PET_BY_STATUS_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("status");
-                }},
-                new java.util.ArrayList<String>() {{
-                    add(status);
+                new HashMap<String, Object>() {{
+                    put("status", status);
                 }}
         );
     }
@@ -59,10 +51,7 @@ public class PetTestClient {
         return new SwaggerRequest().putResponse(
                 BASE_URL,
                 EndpointConstants.PUT_PET_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("Content-Type: application/json");
-                }},
-                new java.util.ArrayList<String>(),
+                new HashMap<>(){{}},
                 pet
         );
     }
@@ -71,10 +60,7 @@ public class PetTestClient {
         return new SwaggerRequest().postResponse(
                 BASE_URL,
                 EndpointConstants.PUT_PET_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("Content-Type: application/json");
-                }},
-                new java.util.ArrayList<String>(),
+                new HashMap<>(){{}},
                 pet
         );
     }
@@ -83,13 +69,8 @@ public class PetTestClient {
         return new SwaggerRequest().deleteResponse(
                 BASE_URL,
                 EndpointConstants.PUT_PET_ENDPOINT+"/"+petId,
-                new java.util.ArrayList<String>() {{
-                    add("petId");
-                }},
-                new java.util.ArrayList<String>() {{
-                    add("petId");
-                }},
-                null
+                new HashMap<>(){{}},
+                "{}"
         );
     }
 }

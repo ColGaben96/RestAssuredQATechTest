@@ -8,6 +8,7 @@ import com.visa.qa.restassuredswaggersb.order.model.Order;
 import io.restassured.response.Response;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.visa.qa.restassuredswaggersb.common.utils.EndpointConstants.BASE_URL;
@@ -20,16 +21,14 @@ public class OrderTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.PET_INVENTORY_ENDPOINT,
-                new ArrayList<>(),
-                new ArrayList<>()
+                new HashMap<>() {{}}
         );
     }
     public Response postOrder(Order order) {
         return new SwaggerRequest().postResponse(
                 BASE_URL,
                 EndpointConstants.POST_ORDER_ENDPOINT,
-                new ArrayList<>(),
-                new ArrayList<>(),
+                new HashMap<>() {{}},
                 order
         );
     }
@@ -37,16 +36,14 @@ public class OrderTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.POST_ORDER_ENDPOINT+"/"+orderId,
-                new ArrayList<>(),
-                new ArrayList<>()
+                new HashMap<>() {{}}
         );
     }
     public Response deleteOrderId(Long orderId) {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.POST_ORDER_ENDPOINT+"/"+orderId,
-                new ArrayList<>(),
-                new ArrayList<>()
+                new HashMap<>() {{}}
         );
     }
 }

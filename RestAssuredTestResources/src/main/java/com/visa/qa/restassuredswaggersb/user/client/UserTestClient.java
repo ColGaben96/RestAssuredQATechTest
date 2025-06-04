@@ -8,6 +8,7 @@ import com.visa.qa.restassuredswaggersb.user.model.User;
 import io.restassured.response.Response;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,13 +22,9 @@ public class UserTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.GET_USER_LOGIN_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("username");
-                    add("password");
-                }},
-                new java.util.ArrayList<String>() {{
-                    add("username");
-                    add("password");
+                new HashMap<>() {{
+                    put("username", "testuser");
+                    put("password", "testpass");
                 }}
         );
     }
@@ -36,8 +33,9 @@ public class UserTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.GET_USER_LOGOUT_ENDPOINT,
-                new java.util.ArrayList<String>(),
-                new java.util.ArrayList<String>()
+                new HashMap<>() {{
+                    put("username", "testuser");
+                }}
         );
     }
 
@@ -45,12 +43,7 @@ public class UserTestClient {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.POST_USER_ENDPOINT+"/"+username,
-                new java.util.ArrayList<String>() {{
-                    add("username");
-                }},
-                new java.util.ArrayList<String>() {{
-                    add(username);
-                }}
+                new HashMap<>() {{}}
         );
     }
 
@@ -58,10 +51,7 @@ public class UserTestClient {
         return new SwaggerRequest().postResponse(
                 BASE_URL,
                 EndpointConstants.POST_USER_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("Content-Type: application/json");
-                }},
-                new java.util.ArrayList<String>(),
+                new HashMap<>() {{}},
                 user
         );
     }
@@ -70,24 +60,16 @@ public class UserTestClient {
         return new SwaggerRequest().postResponse(
                 BASE_URL,
                 EndpointConstants.POST_USER_CREATE_WITH_LIST_ENDPOINT,
-                new java.util.ArrayList<String>() {{
-                    add("Content-Type: application/json");
-                }},
-                new java.util.ArrayList<String>(),
+                new HashMap<>() {{}},
                 users
         );
     }
 
-    public Response putUser(String username, String user) {
+    public Response putUser(String username, User user) {
         return new SwaggerRequest().putResponse(
                 BASE_URL,
                 EndpointConstants.POST_USER_ENDPOINT+"/"+username,
-                new java.util.ArrayList<String>() {{
-                    add("Content-Type: application/json");
-                }},
-                new java.util.ArrayList<String>() {{
-                    add("username");
-                }},
+                new HashMap<>() {{}},
                 user
         );
     }
@@ -96,11 +78,8 @@ public class UserTestClient {
         return new SwaggerRequest().deleteResponse(
                 BASE_URL,
                 EndpointConstants.POST_USER_ENDPOINT+"/"+username,
-                new java.util.ArrayList<String>(),
-                new java.util.ArrayList<String>() {{
-                    add(username);
-                }},
-                null
+                new HashMap<>() {{}},
+                "{}"
         );
     }
 }
