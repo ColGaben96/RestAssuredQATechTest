@@ -31,7 +31,7 @@ public class BaseTest {
         log.info("Creating data");
         log.info("Creating User");
         userTestClient.postUser(new User().builder()
-                .id(1)
+                .id(1L)
                 .username("testUser")
                 .firstName("Test")
                 .lastName("User")
@@ -69,6 +69,7 @@ public class BaseTest {
         log.info("Pet created successfully!");
         log.info("Creating Order");
         orderTestClient.postOrder(new Order().builder()
+                .id(1L)
                 .petId(1L)
                 .quantity(2)
                 .shipDate("2023-10-01T00:00:00Z")
@@ -83,9 +84,9 @@ public class BaseTest {
     public void cleanup() {
         log.info("Proceeding with Cleanup");
         log.info("Deleting User");
-        orderTestClient.deleteOrderId("1");
+        orderTestClient.deleteOrderId(1L);
         log.info("Deleting Pet");
-        petTestClient.deletePet("1");
+        petTestClient.deletePet(1L);
         log.info("Deleting User");
         userTestClient.deleteUser("testUser");
         log.info("Cleanup Complete");

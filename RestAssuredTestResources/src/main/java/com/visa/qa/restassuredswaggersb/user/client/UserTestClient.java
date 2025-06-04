@@ -28,8 +28,7 @@ public class UserTestClient {
                 new java.util.ArrayList<String>() {{
                     add("username");
                     add("password");
-                }},
-                null
+                }}
         );
     }
 
@@ -38,8 +37,7 @@ public class UserTestClient {
                 BASE_URL,
                 EndpointConstants.GET_USER_LOGOUT_ENDPOINT,
                 new java.util.ArrayList<String>(),
-                new java.util.ArrayList<String>(),
-                null
+                new java.util.ArrayList<String>()
         );
     }
 
@@ -52,8 +50,7 @@ public class UserTestClient {
                 }},
                 new java.util.ArrayList<String>() {{
                     add(username);
-                }},
-                null
+                }}
         );
     }
 

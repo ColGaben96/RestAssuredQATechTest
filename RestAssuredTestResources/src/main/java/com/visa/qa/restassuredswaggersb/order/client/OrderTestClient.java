@@ -21,8 +21,7 @@ public class OrderTestClient {
                 BASE_URL,
                 EndpointConstants.PET_INVENTORY_ENDPOINT,
                 new ArrayList<>(),
-                new ArrayList<>(),
-                null
+                new ArrayList<>()
         );
     }
     public Response postOrder(Order order) {
@@ -34,22 +33,20 @@ public class OrderTestClient {
                 order
         );
     }
-    public Response getOrderId(String orderId) {
+    public Response getOrderId(Long orderId) {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.POST_ORDER_ENDPOINT+"/"+orderId,
                 new ArrayList<>(),
-                new ArrayList<>(),
-                null
+                new ArrayList<>()
         );
     }
-    public Response deleteOrderId(String orderId) {
+    public Response deleteOrderId(Long orderId) {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.POST_ORDER_ENDPOINT+"/"+orderId,
                 new ArrayList<>(),
-                new ArrayList<>(),
-                null
+                new ArrayList<>()
         );
     }
 }

@@ -16,7 +16,7 @@ public class PetTestClient {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final TypeReference<Map<String, Object>> typeRef = new TypeReference<>() {};
 
-    public Response getPetById(String petId) {
+    public Response getPetById(Long petId) {
         return new SwaggerRequest().getResponse(
                 BASE_URL,
                 EndpointConstants.PUT_PET_ENDPOINT+"/"+petId,
@@ -25,8 +25,7 @@ public class PetTestClient {
                 }},
                 new java.util.ArrayList<String>() {{
                     add("petId");
-                }},
-                null
+                }}
         );
     }
 
@@ -39,8 +38,7 @@ public class PetTestClient {
                 }},
                 new java.util.ArrayList<String>() {{
                     addAll(tags);
-                }},
-                null
+                }}
         );
     }
 
@@ -53,8 +51,7 @@ public class PetTestClient {
                 }},
                 new java.util.ArrayList<String>() {{
                     add(status);
-                }},
-                null
+                }}
         );
     }
 
@@ -82,7 +79,7 @@ public class PetTestClient {
         );
     }
 
-    public  Response deletePet(String petId) {
+    public  Response deletePet(Long petId) {
         return new SwaggerRequest().deleteResponse(
                 BASE_URL,
                 EndpointConstants.PUT_PET_ENDPOINT+"/"+petId,

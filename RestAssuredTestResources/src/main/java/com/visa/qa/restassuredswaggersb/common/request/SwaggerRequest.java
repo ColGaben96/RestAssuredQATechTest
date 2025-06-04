@@ -15,10 +15,9 @@ import java.util.Map;
 
 public class SwaggerRequest extends RestAssured {
 
-    public Response getResponse(String baseUrl, String path, List<String> headers, List<String> params, Object body) {
+    public Response getResponse(String baseUrl, String path, List<String> headers, List<String> params) {
         return RestAssured
                 .given()
-                .body(body)
                 .header("content-type", "application/json")
                 .header("Accept-Encoding", "UTF-8")
                 .baseUri(baseUrl)
