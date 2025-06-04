@@ -3,11 +3,14 @@ package com.visa.qa.restassuredswaggersb.pet.client;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.visa.qa.restassuredswaggersb.common.request.SwaggerRequest;
+import com.visa.qa.restassuredswaggersb.common.utils.EndpointConstants;
 import com.visa.qa.restassuredswaggersb.pet.model.Pet;
 import io.restassured.response.Response;
 
 import java.util.List;
 import java.util.Map;
+
+import static com.visa.qa.restassuredswaggersb.common.utils.EndpointConstants.BASE_URL;
 
 public class PetTestClient {
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -15,8 +18,8 @@ public class PetTestClient {
 
     public Response getPetById(String petId) {
         return new SwaggerRequest().getResponse(
-                "localhost:8080",
-                "/pet/"+petId,
+                BASE_URL,
+                EndpointConstants.PUT_PET_ENDPOINT+"/"+petId,
                 new java.util.ArrayList<String>() {{
                     add("petId");
                 }},
@@ -29,8 +32,8 @@ public class PetTestClient {
 
     public Response getPetByTags(List<String> tags) {
         return new SwaggerRequest().getResponse(
-                "localhost:8080",
-                "/pet/findByTags",
+                BASE_URL,
+                EndpointConstants.GET_PET_BY_TAGS_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("tags");
                 }},
@@ -43,8 +46,8 @@ public class PetTestClient {
 
     public Response getPetByStatus(String status) {
         return new SwaggerRequest().getResponse(
-                "localhost:8080",
-                "/pet/findByStatus",
+                BASE_URL,
+                EndpointConstants.GET_PET_BY_STATUS_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("status");
                 }},
@@ -57,8 +60,8 @@ public class PetTestClient {
 
     public Response putPet(Pet pet) {
         return new SwaggerRequest().putResponse(
-                "localhost:8080",
-                "/pet",
+                BASE_URL,
+                EndpointConstants.PUT_PET_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("Content-Type: application/json");
                 }},
@@ -69,8 +72,8 @@ public class PetTestClient {
 
     public Response postPet(Pet pet) {
         return new SwaggerRequest().postResponse(
-                "localhost:8080",
-                "/pet",
+                BASE_URL,
+                EndpointConstants.PUT_PET_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("Content-Type: application/json");
                 }},
@@ -81,8 +84,8 @@ public class PetTestClient {
 
     public  Response deletePet(String petId) {
         return new SwaggerRequest().deleteResponse(
-                "localhost:8080",
-                "/pet/"+petId,
+                BASE_URL,
+                EndpointConstants.PUT_PET_ENDPOINT+"/"+petId,
                 new java.util.ArrayList<String>() {{
                     add("petId");
                 }},

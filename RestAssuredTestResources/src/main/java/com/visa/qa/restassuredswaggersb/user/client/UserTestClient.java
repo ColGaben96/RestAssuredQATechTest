@@ -3,6 +3,7 @@ package com.visa.qa.restassuredswaggersb.user.client;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.visa.qa.restassuredswaggersb.common.request.SwaggerRequest;
+import com.visa.qa.restassuredswaggersb.common.utils.EndpointConstants;
 import com.visa.qa.restassuredswaggersb.user.model.User;
 import io.restassured.response.Response;
 
@@ -10,14 +11,16 @@ import io.restassured.response.Response;
 import java.util.List;
 import java.util.Map;
 
+import static com.visa.qa.restassuredswaggersb.common.utils.EndpointConstants.BASE_URL;
+
 public class UserTestClient {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final TypeReference<Map<String, Object>> typeRef = new TypeReference<>() {};
 
     public Response getUserLogin() {
         return new SwaggerRequest().getResponse(
-                "localhost:8080",
-                "/user/login",
+                BASE_URL,
+                EndpointConstants.GET_USER_LOGIN_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("username");
                     add("password");
@@ -32,8 +35,8 @@ public class UserTestClient {
 
     public Response getUserLogout() {
         return new SwaggerRequest().getResponse(
-                "localhost:8080",
-                "/user/logout",
+                BASE_URL,
+                EndpointConstants.GET_USER_LOGOUT_ENDPOINT,
                 new java.util.ArrayList<String>(),
                 new java.util.ArrayList<String>(),
                 null
@@ -42,8 +45,8 @@ public class UserTestClient {
 
     public Response getUserByName(String username) {
         return new SwaggerRequest().getResponse(
-                "localhost:8080",
-                "/user/{username}",
+                BASE_URL,
+                EndpointConstants.POST_USER_ENDPOINT+"/"+username,
                 new java.util.ArrayList<String>() {{
                     add("username");
                 }},
@@ -56,8 +59,8 @@ public class UserTestClient {
 
     public Response postUser(User user) {
         return new SwaggerRequest().postResponse(
-                "localhost:8080",
-                "/user",
+                BASE_URL,
+                EndpointConstants.POST_USER_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("Content-Type: application/json");
                 }},
@@ -68,8 +71,8 @@ public class UserTestClient {
 
     public Response postUserWithList(List<String> users) {
         return new SwaggerRequest().postResponse(
-                "localhost:8080",
-                "/user/createWithList",
+                BASE_URL,
+                EndpointConstants.POST_USER_CREATE_WITH_LIST_ENDPOINT,
                 new java.util.ArrayList<String>() {{
                     add("Content-Type: application/json");
                 }},
@@ -80,8 +83,8 @@ public class UserTestClient {
 
     public Response putUser(String username, String user) {
         return new SwaggerRequest().putResponse(
-                "localhost:8080",
-                "/user/{username}",
+                BASE_URL,
+                EndpointConstants.POST_USER_ENDPOINT+"/"+username,
                 new java.util.ArrayList<String>() {{
                     add("Content-Type: application/json");
                 }},
@@ -94,8 +97,8 @@ public class UserTestClient {
 
     public Response deleteUser(String username) {
         return new SwaggerRequest().deleteResponse(
-                "localhost:8080",
-                "/user/"+username,
+                BASE_URL,
+                EndpointConstants.POST_USER_ENDPOINT+"/"+username,
                 new java.util.ArrayList<String>(),
                 new java.util.ArrayList<String>() {{
                     add(username);

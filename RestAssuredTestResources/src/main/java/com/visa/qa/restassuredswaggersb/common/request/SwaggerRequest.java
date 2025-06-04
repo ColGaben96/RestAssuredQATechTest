@@ -21,7 +21,10 @@ public class SwaggerRequest extends RestAssured {
                 .body(body)
                 .header("content-type", "application/json")
                 .header("Accept-Encoding", "UTF-8")
-                .get(baseUrl + path);
+                .baseUri(baseUrl)
+                .basePath(path)
+                .when()
+                .get();
     }
 
     public Response postResponse(String baseUrl, String path, List<String> headers, List<String> params, Object body) {
@@ -29,31 +32,43 @@ public class SwaggerRequest extends RestAssured {
                 .given()
                 .body(body)
                 .header("Content-Type", "application/json")
-                .header("Content-Encoding", "UTF-8")
-                .post(baseUrl + path);
+                .header("Accept-Encoding", "UTF-8")
+                .baseUri(baseUrl)
+                .basePath(path)
+                .when()
+                .post();
     }
     public Response putResponse(String baseUrl, String path, List<String> headers, List<String> params, Object body) {
         return RestAssured
                 .given()
                 .body(body)
                 .header("content-type", "application/json")
-                .header("Content-Encoding", "UTF-8")
-                .put(baseUrl + path);
+                .header("Accept-Encoding", "UTF-8")
+                .baseUri(baseUrl)
+                .basePath(path)
+                .when()
+                .put();
     }
     public Response deleteResponse(String baseUrl, String path, List<String> headers, List<String> params, Object body) {
         return RestAssured
                 .given()
                 .body(body)
                 .header("content-type", "application/json")
-                .header("Content-Encoding", "UTF-8")
-                .delete(baseUrl + path);
+                .header("Accept-Encoding", "UTF-8")
+                .baseUri(baseUrl)
+                .basePath(path)
+                .when()
+                .delete();
     }
     public Response patchResponse(String baseUrl, String path, List<String> headers, List<String> params, Object body) {
         return RestAssured
                 .given()
                 .body(body)
                 .header("content-type", "application/json")
-                .header("Content-Encoding", "UTF-8")
-                .patch(baseUrl + path);
+                .header("Accept-Encoding", "UTF-8")
+                .baseUri(baseUrl)
+                .basePath(path)
+                .when()
+                .patch();
     }
 }
