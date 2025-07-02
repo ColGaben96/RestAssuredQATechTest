@@ -28,7 +28,7 @@ public class OrderTests extends BaseTest {
     @Test
     public void testPostOrder() {
         log.info("Starting testPostOrder");
-        final Response response = client.postOrder(new Order().builder()
+        final Response response = client.postOrder(Order.builder()
                 .id(2L)
                 .petId(1L)
                 .quantity(2)

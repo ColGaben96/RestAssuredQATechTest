@@ -2,15 +2,10 @@ package com.visa.qa.restassuredswaggersb.common.request;
 
 
 import io.restassured.RestAssured;
-import io.restassured.http.Headers;
-import io.restassured.response.Response;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
-import java.util.List;
+import io.restassured.response.Response;
+
+
 import java.util.Map;
 
 public class SwaggerRequest extends RestAssured {

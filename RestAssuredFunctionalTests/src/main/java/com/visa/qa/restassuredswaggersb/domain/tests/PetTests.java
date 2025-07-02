@@ -28,7 +28,7 @@ public class PetTests extends BaseTest{
     @Test
     public void testPostPet() {
         log.info("Starting testPostPet");
-        final Response response = petTestClient.postPet(new Pet().builder()
+        final Response response = petTestClient.postPet(Pet.builder()
                 .id(2L)
                 .name("NewPet")
                 .status("available")
@@ -50,7 +50,7 @@ public class PetTests extends BaseTest{
     @Test
     public void testUpdatePet() {
         log.info("Starting testUpdatePet");
-        final Response response = petTestClient.putPet(new Pet().builder()
+        final Response response = petTestClient.putPet(Pet.builder()
                 .id(1L)
                 .name("UpdatedPet")
                 .status("sold")

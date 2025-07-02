@@ -31,7 +31,7 @@ public class UserTests extends BaseTest{
     @Test
     public void testCreateUser() {
         log.info("Starting testCreateUser");
-        final var user = new User().builder()
+        final var user = User.builder()
                 .id(2L)
                 .username("newUser")
                 .firstName("New")
@@ -49,7 +49,7 @@ public class UserTests extends BaseTest{
     @Test
     public void testUpdateUser() {
         log.info("Starting testUpdateUser");
-        final User user = new User().builder()
+        final User user = User.builder()
                 .id(1L)
                 .username("updatedUser")
                 .firstName("Updated")

@@ -1,6 +1,5 @@
 package com.visa.qa.restassuredswaggersb.domain.tests;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.visa.qa.restassuredswaggersb.common.utils.Category;
 import com.visa.qa.restassuredswaggersb.common.utils.Tag;
 import com.visa.qa.restassuredswaggersb.order.client.OrderTestClient;
@@ -30,7 +29,7 @@ public class BaseTest {
     public void dataCreation() {
         log.info("Creating data");
         log.info("Creating User");
-        userTestClient.postUser(new User().builder()
+        userTestClient.postUser(User.builder()
                 .id(1L)
                 .username("testUser")
                 .firstName("Test")
@@ -43,11 +42,11 @@ public class BaseTest {
         );
         log.info("User created successfully!");
         log.info("Creating Pet");
-        petTestClient.postPet(new Pet().builder()
+        petTestClient.postPet(Pet.builder()
                 .id(1L)
                 .name("TestPet")
                         .status("available")
-                        .category(new Category().builder()
+                        .category(Category.builder()
                                 .id(1L)
                                 .name("TestCategory")
                                 .build())
@@ -56,11 +55,11 @@ public class BaseTest {
                             add("http://example.com/photo2.jpg");
                         }})
                         .tags(new ArrayList<Tag>() {{
-                            add(new Tag().builder()
+                            add(Tag.builder()
                                     .id(1L)
                                     .name("TestTag")
                                     .build());
-                            add(new Tag().builder()
+                            add(Tag.builder()
                                     .id(2L)
                                     .name("AnotherTag")
                                     .build());
@@ -68,7 +67,7 @@ public class BaseTest {
                 .build());
         log.info("Pet created successfully!");
         log.info("Creating Order");
-        orderTestClient.postOrder(new Order().builder()
+        orderTestClient.postOrder(Order.builder()
                 .id(1L)
                 .petId(1L)
                 .quantity(2)
